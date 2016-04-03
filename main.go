@@ -15,16 +15,19 @@ package main
 import (
 	"log"
 	"net/http"
+
+	"github.com/jsadwith/Multi-Fire/model"
+	"github.com/jsadwith/Multi-Fire/router"
 )
 
 func main() {
 
 	// Create SQLite tables if they don't exist
-	CreateTableKindling()
-	CreateTableTwig()
+	model.CreateTableKindling()
+	model.CreateTableTwig()
 
 	// Register routes, ensuring trailing slashes redirect to route - /route/ -> /route
-	router := NewRouter()
+	router := router.NewRouter()
 
 	log.Fatal(http.ListenAndServe(":8080", router))
 }

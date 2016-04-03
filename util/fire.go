@@ -6,11 +6,12 @@ Handles URL requests
 
 */
 
-package main
+package util
 
 import (
 	"net/http"
 	"time"
+	"log"
 )
 
 // Make a request to a URL
@@ -20,6 +21,8 @@ func Fire(url string) {
 	client := http.Client{
 		Timeout: timeout,
 	}
+
+	log.Printf("Firing: %s", url)
 
 	req, _ := http.NewRequest("GET", url, nil)
 	// req.Header.Set("HTTP_HOST", "value")

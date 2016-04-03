@@ -6,7 +6,7 @@ Simple web logger from http://thenewstack.io/make-a-restful-json-api-go/
 
 */
 
-package main
+package util
 
 import (
 	"log"

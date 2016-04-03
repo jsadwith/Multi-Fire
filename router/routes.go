@@ -6,10 +6,12 @@ Specifies routes
 
 */
 
-package main
+package router
 
 import (
 	"net/http"
+
+	"github.com/jsadwith/Multi-Fire/api"
 )
 
 // Route type
@@ -28,24 +30,24 @@ var routes = Routes{
 		"Index",
 		"GET",
 		"/",
-		Index,
+		api.Index,
 	},
 	Route{
 		"Ignite",
 		"GET",
 		"/ignite/{kindlingId}",
-		Ignite,
+		api.Ignite,
 	},
 	Route{
 		"Get",
 		"GET",
 		"/get/{kindlingId}",
-		Get,
+		api.Get,
 	},
 	Route{
 		"Add",
 		"POST",
 		"/add",
-		Add,
+		api.Add,
 	},
 }

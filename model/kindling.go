@@ -7,9 +7,11 @@ Implements gorm ORM: https://github.com/jinzhu/gorm
 
 */
 
-package main
+package model
 
-import ()
+import (
+	"github.com/jsadwith/Multi-Fire/database"
+)
 
 // Kindling model - simple storage of Kindling Ids
 type Kindling struct {
@@ -21,7 +23,7 @@ type Kindling struct {
 type Kindlings []Kindling
 
 func CreateTableKindling() {
-	db := OpenDbConn()
+	db := database.OpenDbConn()
 
 	// Create Table
 	db.CreateTable(&Kindling{})
@@ -31,7 +33,7 @@ func AddKindling() int {
 	var kindling Kindling
 
 	// Add Kindling to DB
-	db := OpenDbConn()
+	db := database.OpenDbConn()
 	db.Create(&kindling)
 
 	return kindling.Id
@@ -40,7 +42,7 @@ func AddKindling() int {
 func GetKindling(kindlingId int) Kindling {
 	var kindling Kindling
 
-	db := OpenDbConn()
+	db := database.OpenDbConn()
 	db.Preload("Twigs").First(&kindling, kindlingId)
 
 	return kindling

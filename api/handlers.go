@@ -2,11 +2,11 @@
 
 handlers.go
 
-Handles route requests
+Handles API requests
 
 */
 
-package main
+package api
 
 import (
 	"encoding/json"
@@ -17,6 +17,8 @@ import (
 	"net/http"
 	"strconv"
 
+	"github.com/jsadwith/Multi-Fire/model"
+	"github.com/jsadwith/Multi-Fire/util"
 	"github.com/gorilla/mux"
 )
 
@@ -37,11 +39,11 @@ func Ignite(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	kindling := GetKindling(kindlingId)
+	kindling := model.GetKindling(kindlingId)
 
 	// Fire off each of the Twigs
 	for _, twig := range kindling.Twigs {
-		go Fire(twig.Url)
+		go util.Fire(twig.Url)
 	}
 
 	w.Header().Set("Content-Type", "image/gif; charset=UTF-8")
@@ -50,7 +52,7 @@ func Ignite(w http.ResponseWriter, r *http.Request) {
 
 // Add new set of URLs and return ID
 func Add(w http.ResponseWriter, r *http.Request) {
-	var twigs Twigs
+	var twigs model.Twigs
 
 	// Open request body
 	// Set limit to prevent large JSON POSTs
@@ -63,7 +65,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	}
 
 	// First, we need to create Kindling. Then we can add the Twigs
-	kindlingId := AddKindling()
+	kindlingId := model.AddKindling()
 
 	// Unmarshal URLs into Twigs
 	if err := json.Unmarshal(body, &twigs); err != nil {
@@ -78,7 +80,7 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	for _, twig := range twigs {
 		// log.Printf("%+v\n", twig.Url)
 		twig.KindlingId = kindlingId
-		AddTwig(twig)
+		model.AddTwig(twig)
 	}
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
@@ -99,7 +101,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	kindling := GetKindling(kindlingId)
+	kindling := model.GetKindling(kindlingId)
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
 	w.WriteHeader(http.StatusOK)

@@ -5,11 +5,12 @@ router.go
 Implements routes from routes.go
 
 */
-package main
+package router
 
 import (
 	"net/http"
 
+	"github.com/jsadwith/Multi-Fire/util"
 	"github.com/gorilla/mux"
 )
 
@@ -23,7 +24,7 @@ func NewRouter() *mux.Router {
 		var handler http.Handler
 
 		handler = route.HandlerFunc
-		handler = Logger(handler, route.Name)
+		handler = util.Logger(handler, route.Name)
 
 		router.
 			Methods(route.Method).

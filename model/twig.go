@@ -7,9 +7,11 @@ Implements gorm ORM: https://github.com/jinzhu/gorm
 
 */
 
-package main
+package model
 
-import ()
+import (
+	"github.com/jsadwith/Multi-Fire/database"
+)
 
 // Twig model - stores a Twig (URL) to a KindlingId
 type Twig struct {
@@ -21,14 +23,14 @@ type Twig struct {
 type Twigs []Twig
 
 func CreateTableTwig() {
-	db := OpenDbConn()
+	db := database.OpenDbConn()
 
 	// Create Table
 	db.CreateTable(&Twig{})
 }
 
 func AddTwig(twig Twig) bool {
-	db := OpenDbConn()
+	db := database.OpenDbConn()
 
 	// Add Twig to DB
 	db.Create(twig)
