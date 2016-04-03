@@ -27,7 +27,8 @@ Add new set of URLs (kindling). Returns kindlingId
 `http://localhost:8080/add`
 
 Payload
-```[
+```
+[
     {
         "url":"http://foo.com"
     },
@@ -47,7 +48,8 @@ Get existing set of URLs (kindling)
 `http://localhost:8080/get/{kindlingId}`
 
 Response
-```{
+```
+{
   "kindling_id": 1,
   "twigs": [
     {
