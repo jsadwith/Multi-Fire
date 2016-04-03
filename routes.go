@@ -40,7 +40,7 @@ var routes = Routes{
 		"Get",
 		"GET",
 		"/get/{kindlingId}",
-		Ignite,
+		Get,
 	},
 	Route{
 		"Add",

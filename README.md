@@ -12,19 +12,33 @@ Setup
 
 Nomenclature
 ============
-* `kindling`: A set of URLs
+* `twig`: A URL
+* `kindling`: A set of twigs
 * `kindlings`: Multiple sets of kindling
 * `ignite`: To trigger a firing of a set of kindling
 
 Usage
 =====
 
-/ignite/{kindlingId}
---------------------
-Fire URLS (kindling) by kindlingId
+/add/{tbd}
+----------
+Add new set of URLs (kindling). Returns kindlingId
 
-`http://localhost:8080/ignite/{kindlingId}`
+`http://localhost:8080/add`
 
+Payload
+```[
+    {
+        "url":"http://foo.com"
+    },
+    {
+        "url":"http://foo2.com"
+    },
+    {
+        "url":"http://foo3.com"
+    }
+]
+```
 
 /get/{kindlingId}
 -----------------
@@ -32,9 +46,26 @@ Get existing set of URLs (kindling)
 
 `http://localhost:8080/get/{kindlingId}`
 
+Response
+```{
+  "kindling_id": 1,
+  "twigs": [
+    {
+      "url": "http://foo.com"
+    },
+    {
+      "url": "http://foo2.com"
+    },
+    {
+      "url": "http://foo3.com"
+    }
+  ]
+}
+```
 
-/add/{tbd}
-----------
-Add new set of URLs (kindling). Returns kindlingId
+/ignite/{kindlingId}
+--------------------
+NOTE: This hasn't been implemented yet
+Fire URLS (kindling) by kindlingId
 
-`http://localhost:8080/add/{tbd}`
+`http://localhost:8080/ignite/{kindlingId}`

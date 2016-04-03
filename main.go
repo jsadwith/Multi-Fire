@@ -18,6 +18,11 @@ import (
 )
 
 func main() {
+
+	// Create SQLite tables if they don't exist
+	CreateTableKindling()
+	CreateTableTwig()
+
 	// Register routes, ensuring trailing slashes redirect to route - /route/ -> /route
 	router := NewRouter()
 
