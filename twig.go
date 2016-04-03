@@ -9,8 +9,7 @@ Implements gorm ORM: https://github.com/jinzhu/gorm
 
 package main
 
-import (
-)
+import ()
 
 // Twig model - stores a Twig (URL) to a KindlingId
 type Twig struct {

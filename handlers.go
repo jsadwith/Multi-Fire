@@ -13,7 +13,7 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
-	"log"
+	// "log"
 	"net/http"
 	"strconv"
 
@@ -31,13 +31,21 @@ func Index(w http.ResponseWriter, r *http.Request) {
 // Ignite a fire of all URLs for this kindlingId
 func Ignite(w http.ResponseWriter, r *http.Request) {
 	vars := mux.Vars(r)
-	kindlingId := vars["kindlingId"]
 
-	fmt.Fprintln(w, "Kindling ID:", kindlingId)
-	fmt.Fprintf(w, "URI, %q", r.URL.Path)
+	kindlingId, err := strconv.Atoi(vars["kindlingId"])
+	if err != nil {
+		panic(err)
+	}
 
-	w.Header().Set("Content-Type", "application/json; charset=UTF-8")
-	w.WriteHeader(http.StatusOK)
+	kindling := GetKindling(kindlingId)
+
+	// Fire off each of the Twigs
+	for _, twig := range kindling.Twigs {
+		go Fire(twig.Url)
+	}
+
+	w.Header().Set("Content-Type", "image/gif; charset=UTF-8")
+	w.WriteHeader(http.StatusNoContent)
 }
 
 // Add new set of URLs and return ID
@@ -91,7 +99,6 @@ func Get(w http.ResponseWriter, r *http.Request) {
 		panic(err)
 	}
 
-	log.Printf("%+v\n", kindlingId)
 	kindling := GetKindling(kindlingId)
 
 	w.Header().Set("Content-Type", "application/json; charset=UTF-8")

@@ -9,8 +9,7 @@ Implements gorm ORM: https://github.com/jinzhu/gorm
 
 package main
 
-import (
-)
+import ()
 
 // Kindling model - simple storage of Kindling Ids
 type Kindling struct {
