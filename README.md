@@ -20,7 +20,7 @@ Nomenclature
 Usage
 =====
 
-/add/{tbd}
+/add
 ----------
 Add new set of URLs (kindling). Returns kindlingId
 
