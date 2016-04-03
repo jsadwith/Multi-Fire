@@ -23,16 +23,18 @@ Usage
 --------------------
 Fire URLS (kindling) by kindlingId
 
-```http://localhost:8080/ignite/{kindlingId}```
+`http://localhost:8080/ignite/{kindlingId}`
+
 
 /get/{kindlingId}
 -----------------
 Get existing set of URLs (kindling)
 
-```http://localhost:8080/get/{kindlingId}```
+`http://localhost:8080/get/{kindlingId}`
+
 
 /add/{tbd}
 ----------
 Add new set of URLs (kindling). Returns kindlingId
 
-```http://localhost:8080/add/{tbd}```
+`http://localhost:8080/add/{tbd}`
