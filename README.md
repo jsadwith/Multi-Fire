@@ -19,11 +19,20 @@ Nomenclature
 Usage
 =====
 
-### Ignite: Fire URLS (kindling) by kindlingId
+/ignite/{kindlingId}
+--------------------
+Fire URLS (kindling) by kindlingId
+
 ```http://localhost:8080/ignite/{kindlingId}```
 
-### Get: Get existing set of URLs (kindling)
+/get/{kindlingId}
+-----------------
+Get existing set of URLs (kindling)
+
 ```http://localhost:8080/get/{kindlingId}```
 
-### Add: Add new set of URLs (kindling)
+/add/{tbd}
+----------
+Add new set of URLs (kindling). Returns kindlingId
+
 ```http://localhost:8080/add/{tbd}```
