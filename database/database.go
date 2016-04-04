@@ -7,7 +7,7 @@ Implements gorm ORM: https://github.com/jinzhu/gorm
 
 */
 
-package main
+package database
 
 import (
 	"github.com/jinzhu/gorm"
