@@ -67,7 +67,9 @@ Response
 
 /ignite/{kindlingId}
 --------------------
-NOTE: This hasn't been implemented yet
-Fire URLS (kindling) by kindlingId
+Fire each twig/URL from set of kindling. 
+Note: Response will be an empty GIF.
 
-`http://localhost:8080/ignite/{kindlingId}`
+Example Usage
+
+`<img src="http://{host}/ignite/234" border="0" />`
